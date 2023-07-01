@@ -9,20 +9,67 @@
 
 
 class Solution(object):
-    def removeElement(self, nums, val):
+    # def removeElement(self, nums, val):
+    #     """
+    #     :type nums: List[int]
+    #     :type val: int
+    #     :rtype: int
+    #     """
+    #     n = len(nums)
+    #     pointer = 0
+    #     right = 0
+    #     while right < n:
+    #         if nums[right] != val:
+    #             nums[pointer] = nums[right]
+    #             pointer += 1
+    #         right += 1
+    #     return pointer
+
+    def removeElement_best(self, nums, val):
         """
         :type nums: List[int]
         :type val: int
         :rtype: int
         """
+        right = len(nums)
+        left = 0
+        while left < right:
+            if nums[left] == val:
+                nums[left] = nums[right - 1]
+                right -= 1
+            else:
+                left += 1
+        return left
 
+    def removeElement_python(self, nums, val):
+        """
+        :type nums: List[int]
+        :type val: int
+        :rtype: int
+        """
+        i = 0
+        while i < len(nums):
+            if nums[i] == val:
+                nums.pop(i)
+                i -= 1
+            i += 1
+        return len(nums)
 
 
 if __name__ == '__main__':
+    nums1 = [3, 2, 2, 3]
+    val1 = 3
+    nums2 = [0, 1, 2, 2, 3, 0, 4, 2]
+    val2 = 2
+    nums3 = [1, 2, 3, 4]
+    val3 = 2
     solution = Solution()
-    nums = [1,0,1,1,0,1]
-    nums1 = [1,1,0,1,1,1]
-    one_nums = solution.removeElement(nums)
-    # one_nums_best = solution.findMaxConsecutiveOnes(nums)
-    print(one_nums)
-    # print(zero_nums_best)
+
+    # result = solution.removeElement(nums2, val2)
+    # print(result)
+
+    # result_best = solution.removeElement_best(nums3, val3)
+    # print(result_best)
+
+    result_python = solution.removeElement_python(nums3, val3)
+    print(result_python)
