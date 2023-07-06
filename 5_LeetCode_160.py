@@ -14,7 +14,7 @@ class Solution:
         :return:
         """
         if not headA or not headB:
-            return None
+            return Non
 
 
 
