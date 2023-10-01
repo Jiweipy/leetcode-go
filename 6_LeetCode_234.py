@@ -23,6 +23,8 @@ class Solution(object):
 
         # print(vals[::-1])  # 字符串翻转
 
+
+
         """
         用left和right两个指针，一个往后，一个往前，不断迭代
         如果left的值不等于right说明不是回文，反之是回文
