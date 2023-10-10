@@ -18,17 +18,35 @@ class Solution(object):
         :type head: ListNode
         :rtype: bool
         """
+        seen = set()
+        while head:
+            if head in seen:
+                return True
+            seen.add(head)
+            head = head.next
+        print(seen)
+        return False
 
+    def hasCycle_v2(self, head):
+        """
 
-
+        :param head:
+        :return:
+        """
+        slow, fast = head, head
+        while fast and fast.next:
+            slow = slow.next
+            fast = fast.next.next
+            if slow == fast:
+                return True
+        return False
 
 
 if __name__ == '__main__':
-    valuesA = [4, 1, 8, 1, 4]
+    valuesA = [3, 2, 0, -4, 2]
     valuesB = [1, 2]
     headA = createLinkedList(valuesA)
     headB = createLinkedList(valuesB)
-
 
     solution = Solution()
     intersecnode = solution.hasCycle(headA)
